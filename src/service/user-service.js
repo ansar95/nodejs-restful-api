@@ -6,6 +6,7 @@ import { validate } from "../validation/validation.js"
 import bcrypt from "bcrypt"
 
 const register = async (request) => {
+
     const user = validate(registerUserValidation, request);
 
     const countUser = await prismaClient.user.count({
@@ -24,7 +25,7 @@ const register = async (request) => {
     return prismaClient.user.create({
         data: user,
         select: {
-            usernamwe: true,
+            username: true,
             name:true,
         }
     })
